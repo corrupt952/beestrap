@@ -1,3 +1,9 @@
+# update packages
+execute "apt update" do
+  user "root"
+  command "apt update"
+end
+
 # Web UIでサーバーを管理するためのツール
 # https://cockpit-project.org/
 package 'cockpit' do
