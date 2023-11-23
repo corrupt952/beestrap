@@ -1,4 +1,3 @@
-# update packages
 execute "apt update" do
   user "root"
   command "apt update"
@@ -11,24 +10,17 @@ package 'cockpit' do
   action :install
 end
 
-# メトリクスを収集して可視化するツール
-# https://www.netdata.cloud/
-package 'netdata' do
-  user 'root'
-  action :install
-end
-execute "change netadata binding address" do
-  user "root"
-  command "sed -i -e 's/bind socket to IP = 127.0.0.1/bind socket to IP = 0.0.0.0/g' /etc/netdata/netdata.conf"
-end
-service 'netdata' do
-  user 'root'
-  action :restart
-end
-
 # プロセスを可視化するツール
 # https://htop.dev/
 package 'htop' do
   user 'root'
   action :install
+end
+
+# メトリクスを収集して可視化するツール
+# https://www.netdata.cloud/
+execute "install netdata" do
+  user "root"
+  command "bash <(curl -Ss https://my-netdata.io/kickstart.sh) --stable-channel"
+  not_if "test -e /usr/sbin/netdata"
 end
