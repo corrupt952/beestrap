@@ -29,6 +29,7 @@ aqua i
 # Install tools via mitamae
 mitamae local $BEESTRAP_PATH/recipes/apt.rb
 mitamae local $BEESTRAP_PATH/recipes/fluentbit.rb
+# mitamae local $BEESTRAP_PATH/recipes/nginx.rb
 # mitamae local $BEESTRAP_PATH/recipes/mysql.rb
 mitamae local $BEESTRAP_PATH/recipes/htop.rb
 mitamae local $BEESTRAP_PATH/recipes/cockpit.rb
