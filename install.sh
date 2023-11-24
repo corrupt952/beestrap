@@ -27,4 +27,9 @@ cp -f $BEESTRAP_PATH/aqua.yaml $HOME/aqua.yaml
 aqua i
 
 # Install tools via mitamae
-mitamae local $BEESTRAP_PATH/recipes/common.rb
+mitamae local $BEESTRAP_PATH/recipes/apt.rb
+mitamae local $BEESTRAP_PATH/recipes/fluentbit.rb
+# mitamae local $BEESTRAP_PATH/recipes/mysql.rb
+mitamae local $BEESTRAP_PATH/recipes/htop.rb
+mitamae local $BEESTRAP_PATH/recipes/cockpit.rb
+mitamae local $BEESTRAP_PATH/recipes/netdata.rb
