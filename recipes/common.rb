@@ -21,6 +21,6 @@ end
 # https://www.netdata.cloud/
 execute "install netdata" do
   user "root"
-  command "bash <(curl -Ss https://my-netdata.io/kickstart.sh) --stable-channel"
+  command "bash -lc 'bash <(curl -Ss https://my-netdata.io/kickstart.sh) --stable-channel'"
   not_if "test -e /usr/sbin/netdata"
 end
