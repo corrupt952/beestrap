@@ -9,6 +9,20 @@ execute "install fluentbit" do
   command "curl https://raw.githubusercontent.com/fluent/fluent-bit/master/install.sh | sh"
 end
 
+# FIXME: mitmaeのバグか何かでuser rootを指定した場合に
+#        一時ファイルは/tmp/Xに作成されるが、それを読み取ろうとしてエラーになり異常終了する
+# template "/etc/fluent-bit/fluent-bit.conf" do
+#   user "root"
+#   action :create
+#   source "fluentbit/fluent-bit.conf"
+# end
+
+# template "/etc/fluent-bit/parsers.conf" do
+#   user "root"
+#   action :create
+#   source "fluentbit/parsers.conf"
+# end
+
 service "fluent-bit" do
   user "root"
   action [:enable, :start]
